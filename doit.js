@@ -14,7 +14,7 @@ function doit() {
 			var tobeparsed = template + '\n' + data;
 
 			var parser = new(less.Parser)( { 
-				paths: ['../bootstrap/lib/']
+				paths: ['./bootstrap/lib/']
 			});
 
 
