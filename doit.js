@@ -1,15 +1,7 @@
-var filename = process.argv[2];
-var crypto = require('crypto');
-var fs = require('fs');
- 
-var shasum = crypto.createHash('sha256');
- 
-var s = fs.ReadStream(filename);
-s.on('data', function(d) {
-  shasum.update(d);
-});
- 
-s.on('end', function() {
-  var d = shasum.digest('hex');
-  console.log(d + '  ' + filename);
-});
+// Read in the variables file
+// Read in the boot strap file
+// parse the whole damn thing
+
+var boostrap = "";
+
+
