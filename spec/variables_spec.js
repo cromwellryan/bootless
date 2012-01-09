@@ -1,6 +1,7 @@
 
 var fs = require('fs')
-	, assert = require('assert');
+	, assert = require('assert')
+	, _ = require('underscore');
 
 var variables = function(){ 
 	return { 
@@ -11,12 +12,6 @@ var variables = function(){
 }();
 
 describe( 'variables', function() {
-	it('custom linkColor', function() {
-		var params = { linkColor: "#0f0f0f;" };
-
-		var matches = variables.toLess(params).match(/^\@linkColor\:\s*\#0f0f0f;$/);
-		assert.notEqual( matches, null);
-	});
 
 	it('default linkColor', function() {
 		var params = { };
@@ -25,9 +20,14 @@ describe( 'variables', function() {
 		assert.notEqual( matches, null);
 	});
 
-	it('default linkColorHover', function() {
-		var matches = variables.toLess(params).match(/^\@linkColorHover\:\s*\darken(@linkColor, 15);$/);
+	it('custom linkColor', function() {
+		var params = { linkColor: "#0f0f0f;" };
 
-		asert.notEqual(matches, null);
+		var lines = variables.toLess(params).split('\n');
+		
+		assert.ok(_.include(lines, '@linkColor: #0f0f0f;'));
+
 	});
+
+
 });
