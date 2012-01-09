@@ -13,31 +13,43 @@ var variables = function(){
 }();
 
 describe( 'variables', function() {
+	
+	function assertContainsLine(less, expected) {
+		var lines = less.split('\n');
+
+		assert.ok(_.include(lines, expected));
+	
+	}
+
+	function assertLessParam(params, expected) {
+		var less = variables.toLess(params);
+
+		assertContainsLine(less, expected);
+	}
 
 	it('default linkColor', function() {
 		var params = { };
 
-		var lines = variables.toLess(params).split('\n');
-
-		assert.ok(_.include(lines, '@linkColor: #0069d6;'));
+		assertLessParam(params, '@linkColor: #0069d6;');
 	});
 
 	it('custom linkColor', function() {
 		var params = { linkColor: "#0f0f0f;" };
 
-		var lines = variables.toLess(params).split('\n');
-		
-		assert.ok(_.include(lines, '@linkColor: #0f0f0f;'));
+		assertLessParam(params, '@linkColor: #0f0f0f;');
 
 	});
 
 	it('default linkColorHover', function() {
 		var params = { };
 
-		var lines = variables.toLess(params).split('\n');
-		
-		assert.ok(_.include(lines, '@linkColorHover: darken(@linkColor, 15);'));
+		assertLessParam(params, '@linkColorHover: darken(@linkColor, 15);');
+	});
 
+	it('custom linkColorHover ignored', function() {
+		var params = { linkColorHover: "asdfqwer" };
+
+		assertLessParam(params, '@linkColorHover: darken(@linkColor, 15);');
 	});
 
 
