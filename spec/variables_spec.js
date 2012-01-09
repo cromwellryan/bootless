@@ -25,4 +25,9 @@ describe( 'variables', function() {
 		assert.notEqual( matches, null);
 	});
 
+	it('default linkColorHover', function() {
+		var matches = variables.toLess(params).match(/^\@linkColorHover\:\s*\darken(@linkColor, 15);$/);
+
+		asert.notEqual(matches, null);
+	});
 });
