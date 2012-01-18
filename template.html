@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootless for Bootstrap</title>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="bootstrap/lib/my.css">
+    
+  </head>
+
+  <body>
+	<div class="navbar navbar-fixed">
+	      <div class="navbar-inner">
+	        <div class="container">
+	          <a class="brand" href="./index.html">Bootless</a>
+	          <ul class="nav">
+	            <li><a href="">Using LESS</a></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </div>	
+	
+	<div class="container">
+	<section id="less-template">	
+	  <div class="page-header">
+	    <h1>LESS Template</h1>
+	  </div>
+	  <div class="row">
+	    <div class="span4">
+	      <h2>Instructions</h2>
+	      <p>Pick some colors and get some css bro.</p>
+	    </div>
+	    <div>
+		<!--
+		@navBarHeight: 40px;
+		@navBarBgStart: #333;
+		@navBarBgEnd: #222;
+		
+		@linkColor:         #08c;
+		
+		@black:             #000;
+		@grayDark:          #333;
+		@gray:              #555;
+		@grayLight:         #999;
+		@grayLighter:       #eee;
+		@white:             #fff;
+		
+		@baseFontSize:          13px;
+		@baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+		@baseLineHeight:        18px;
+		
+		@primaryButtonColor:    @blue;
+		-->
+	      <form>
+	        <fieldset>
+	          <legend>Legend</legend>
+	          <div class="clearfix">
+	            <label for="linkColor">linkColor</label>
+	            <div class="input">
+	              <input class="xlarge" id="xlInput" name="linkColor" size="30" type="text">
+	            </div>
+	          </div>
+			  <div class="clearfix">
+	            <label for="baseColor">baseColor</label>
+	            <div class="input">
+	              <input class="xlarge" id="xlInput" name="baseColor" size="30" type="text">
+	            </div>
+	          </div>
+	          <div class="clearfix">
+	            <label for="black">black</label>
+	            <div class="input">
+	              <input class="xlarge" id="xlInput" name="black" size="30" type="text">
+	            </div>
+	          </div>
+		      <div class="clearfix">
+	            <label for="white">white</label>
+	            <div class="input">
+	              <input class="xlarge" id="xlInput" name="white" size="30" type="text">
+	            </div>
+	          </div>
+	          <div class="actions">
+		        <input type="submit" class="btn primary">GO!</input>
+		      </div>
+	        </fieldset>
+	      </form>
+	    </div>
+	  </div>
+	</section>
+	</div>
+  </body>
+</html>
