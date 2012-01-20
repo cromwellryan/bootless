@@ -1,28 +1,43 @@
   describe "BootlessView", ->
-    beforeEach ->
-      this.view = new App.BootlessView({el:'#bootless', template:'css'})
-      setFixtures("""
-        <div id="bootless"></div>
-        <stylesheet type="text/template" id="css_link_template">This will be a link in the header.</script>
-        """
-      )
-    it "loads the css template", ->
-      expect(this.templates.css).toBeDefined()
+    describe "Loads the template", ->
+      beforeEach =>
+        setFixtures(
+          """
+          <div id="bootless">The bootless div.</div>
+          <stylesheet type="text/template" id="css_link_template">This will be a link in the header.</script>
+          """
+        )
+        @view = new App.BootlessView('#bootless','#css_link_template')
+      it "loads the css template", =>
+        expect(@view.css_link_template).toBeDefined()
 
-    describe "Root element", 
-      it "is a DIV", ->
-        expect(this.view.el.nodeName).toEqual("DIV")
+      it "is a DIV", =>
+        expect(@view.el.nodeName).toEqual("DIV")
 
-    describe "Rendering", ->
-      it "returns the view object", ->
+      it "returns the view object", =>
         expect(this.view.render()).toEqual(this.view)
 
     describe "Submit state", ->
-      xdescribe "When submit button handler fired - Jasmine async", ->
+      describe "When submit button handler fired - Jasmine async", ->
         beforeEach ->
-          this.view.render.find('input[type=submit]').trigger('click')
+          spyOn($, "ajax").andCallFake (options) ->
+            options.success()
+            
+          setFixtures(
+            """
+            <head></head>
+            <div id="bootless">
+              <form><input type="submit"></form>
+            </div>
+            <script type="text/template" id="css_link_template">This will be a link in the header.</script>
+            """
+          )
+          @view = new App.BootlessView('#bootless','#css_link_template')
 
         it "posts to the server", ->
-          null
+          callback = jasmine.createSpy()
+          @view.getCss(callback)
+          expect(callback).toHaveBeenCalled();
         it "uses the new css in the head element", ->
-          null
+          @vew.updateCss(id)
+          
