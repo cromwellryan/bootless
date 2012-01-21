@@ -1,3 +1,4 @@
+(function() {
 
   describe("BootlessView", function() {
     describe("Loads the template", function() {
@@ -37,3 +38,5 @@
       });
     });
   });
+
+}).call(this);
