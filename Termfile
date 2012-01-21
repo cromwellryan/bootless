@@ -1,0 +1,15 @@
+# COMMENT OF SCRIPT HERE
+# you can make as many tabs as you wish...
+# tab names are actually arbitrary at this point too.
+
+setup 'echo "Setting up your working environment"'
+
+window do
+	tab "jasmine" do 
+		run "bundle exec rake jasmine"
+	end
+  tab "guard" do
+		run "guard"
+	end
+end
+
