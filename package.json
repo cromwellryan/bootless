@@ -8,14 +8,14 @@
     "url": ""
   },
   "scripts": {
-    "test": "node node_modules/.bin/jasmine-node.cmd spec"
+    "test": "node node_modules/.bin/jasmine-node spec"
   },
   "engines": {
     "node": "~0.6.6"
   },
   "dependencies": {},
   "devDependencies": {
-			"jasmine-node": "1.0.13",
+			"jasmine-node": "1.0.20",
 			"less": "1.1.6",
 			"underscore": "1.2.4"
 	}
