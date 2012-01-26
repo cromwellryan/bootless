@@ -11,4 +11,16 @@ App.BootlessView = class BootlessView extends Backbone.View
     this.render()
   render : ->
     return this
+  submit : ->
+    this.getCss ( this.modifyHead )
+  getCss : (callback)->
+    $('form', @el).serialize()
+    $.ajax
+      url: "whaturl"
+      data : $('form', @el).serialize()
+      success: callback
+      dataType : 'text'
+  modifyHead : (stylesheet) =>
+    link = @css_link_template ({stylesheet:stylesheet})
+    $('head').append(link)
     

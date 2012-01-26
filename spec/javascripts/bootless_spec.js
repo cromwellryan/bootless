@@ -22,7 +22,7 @@
           spyOn($, "ajax").andCallFake(function(options) {
             return options.success();
           });
-          setFixtures("<head></head>\n<div id=\"bootless\">\n  <form><input type=\"submit\"></form>\n</div>\n<script type=\"text/template\" id=\"css_link_template\">This will be a link in the header.</script>");
+          setFixtures("<head>\n<link id=\"bootstrap\" rel=\"stylesheet\" media=\"screen\" href=\"replaceme.css\">\n</head>\n<div id=\"bootless\">\n  <form><input type=\"submit\"></form>\n</div>\n<script type=\"text/template\" id=\"css_link_template\">This will be a link in the header.</script>");
           return this.view = new App.BootlessView('#bootless', '#css_link_template');
         });
         it("posts to the server", function() {
@@ -32,7 +32,7 @@
           return expect(callback).toHaveBeenCalled();
         });
         return it("uses the new css in the head element", function() {
-          return this.vew.updateCss(id);
+          return this.view.modifyHead('abc');
         });
       });
     });

@@ -16,7 +16,7 @@
 
       it "returns the view object", =>
         expect(this.view.render()).toEqual(this.view)
-
+        
     describe "Submit state", ->
       describe "When submit button handler fired - Jasmine async", ->
         beforeEach ->
@@ -25,7 +25,9 @@
             
           setFixtures(
             """
-            <head></head>
+            <head>
+            <link id="bootstrap" rel="stylesheet" media="screen" href="replaceme.css">
+            </head>
             <div id="bootless">
               <form><input type="submit"></form>
             </div>
@@ -37,7 +39,7 @@
         it "posts to the server", ->
           callback = jasmine.createSpy()
           @view.getCss(callback)
-          expect(callback).toHaveBeenCalled();
+          expect(callback).toHaveBeenCalled()
         it "uses the new css in the head element", ->
-          @vew.updateCss(id)
+          @view.modifyHead('abc')
           
