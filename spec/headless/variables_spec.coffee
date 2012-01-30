@@ -17,6 +17,9 @@ variables =
 			gray: "#555"
 			grayLight: "#999"
 			grayLighter: "#eee"
+			gridColumns: "12"
+			gridColumnsWidth: "60px"
+			gridGutterWidth: "20px"
 
 		defaultorelse = (param) -> orelse(params[param], defaults[param])
 
@@ -29,20 +32,24 @@ variables =
 		lines.push("@grayLight: " + defaultorelse("grayLight"))
 		lines.push("@grayLighter: " + defaultorelse("grayLighter"))
 
+		lines.push("@gridColumns: " + defaultorelse("gridColumns"))
+		lines.push("@gridColumnsWidth: " + defaultorelse("gridColumnsWidth"))
+		lines.push("@gridGutterWidth: " + defaultorelse("gridGutterWidth"))
+
 		lines.join("\n")
-
-describe 'variables', ->
 	
-	assertContainsLine = (less, expected) ->
-		lines = less.split('\n')
+assertContainsLine = (less, expected) ->
+	lines = less.split('\n')
 
-		assert.ok(_.include(lines, expected))
+	assert.ok(_.include(lines, expected))
 
-	assertLessParam = (params, expected) ->
-		less = variables.toLess(params)
+assertLessParam = (params, expected) ->
+	less = variables.toLess(params)
 
-		assertContainsLine(less, expected)
+	assertContainsLine(less, expected)
 
+
+describe 'Colors', ->
 	it 'default linkColor', ->
 		params = { }
 
@@ -129,4 +136,13 @@ describe 'variables', ->
 			grayLighter: '#828331'
 
 		assertLessParam(params, '@grayLighter: #828331')
+
+describe 'Flexible Grid', ->
+	it 'defaults', ->
+		params = { }
+
+		assertLessParam(params, '@gridColumns: 12')
+		assertLessParam(params, '@gridColumnsWidth: 60px')
+		assertLessParam(params, '@gridGutterWidth: 20px')
+
 
