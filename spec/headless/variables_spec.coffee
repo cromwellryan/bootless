@@ -5,7 +5,13 @@ _ = require('underscore')
 variables =
 	toLess: (params)->
 		color = if params.linkColor then params.linkColor else "#0069d6"
-		"@linkColor: " + color  + "\n" + "@linkColorHover: darken(@linkColor, 15)"
+		
+		lines = []
+
+		lines.push("@linkColor: " + color)
+		lines.push("@linkColorHover: darken(@linkColor, 15)")
+
+		lines.join("\n")
 
 describe 'variables', ->
 	
