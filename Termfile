@@ -9,7 +9,7 @@ window do
 		run "bundle exec rake jasmine"
 	end
   tab "guard" do
-		run "guard"
+		run "bundle exec guard"
 	end
 end
 

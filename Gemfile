@@ -10,4 +10,6 @@ group :development, :test do
 	gem 'rake'
 	gem 'growl'
 	gem 'consular'
+	gem 'rb-inotify'
+	gem 'libnotify'
 end
